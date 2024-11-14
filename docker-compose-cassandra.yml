@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  cassandra:
+    image: cassandra:latest
+    container_name: xela-container
+    ports:
+      - "9042:9042"
+    volumes:
+      - ./cassandra/cassandra.yaml:/etc/cassandra/cassandra.yaml
+

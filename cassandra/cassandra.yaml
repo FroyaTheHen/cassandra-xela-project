@@ -1,0 +1,17 @@
+# All the details of this file confi are well documented
+#  https://cassandra.apache.org/doc/latest/configuration/
+
+cluster_name: 'xela-container'
+authenticator: PasswordAuthenticator
+authorizer: AllowAllAuthorizer
+role_manager: CassandraRoleManager
+commitlog_sync: batch
+partitioner: org.apache.cassandra.dht.Murmur3Partitioner
+endpoint_snitch: SimpleSnitch
+
+seed_provider:
+    - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+      parameters:
+          # seeds is actually a comma-delimited list of addresses.
+          # Ex: "<ip1>,<ip2>,<ip3>"
+          - seeds: "172.20.0.2"
