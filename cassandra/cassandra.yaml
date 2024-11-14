@@ -1,4 +1,4 @@
-# All the details of this file confi are well documented
+# All the details of this file config are well documented
 #  https://cassandra.apache.org/doc/latest/configuration/
 
 cluster_name: 'xela-container'
@@ -8,7 +8,11 @@ role_manager: CassandraRoleManager
 commitlog_sync: batch
 partitioner: org.apache.cassandra.dht.Murmur3Partitioner
 endpoint_snitch: SimpleSnitch
-
+rpc_address: 0.0.0.0
+rpc_keepalive: true
+start_native_transport: true
+native_transport_port: 9042
+broadcast_rpc_address: 172.20.0.2
 seed_provider:
     - class_name: org.apache.cassandra.locator.SimpleSeedProvider
       parameters:

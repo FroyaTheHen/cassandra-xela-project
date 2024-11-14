@@ -11,3 +11,4 @@ WITH replication = {
     'replication_factor': 1
 };"""
 session.execute(q)
+cluster.shutdown()
