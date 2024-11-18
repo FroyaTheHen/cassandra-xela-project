@@ -11,4 +11,3 @@ class Volcano(DjangoCassandraModel):
     name = columns.Text(required=False)
     description = columns.Text(required=False)
     country = columns.Text(required=False)
-
