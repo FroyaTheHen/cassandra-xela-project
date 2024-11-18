@@ -2,7 +2,7 @@ version: '3'
 
 services:
   cassandra:
-    network_mode: quetzaltenango_default
+    network_mode: quetzaltenango-network
     image: cassandra:latest
     container_name: xela-container
     ports:
@@ -10,7 +10,10 @@ services:
     volumes:
       - ./cassandra/cassandra.yaml:/etc/cassandra/cassandra.yaml
   backend:
-    network_mode: quetzaltenango_default
+    network_mode: quetzaltenango-network
+    depends_on:
+      cassandra:
+        condition: service_started
     build:
       context: .
       dockerfile: ./app/Dockerfile
@@ -24,6 +27,3 @@ services:
     env_file:
       - .env
 
-#    depends_on:
-#      - cassandra:
-#          condition: service_healthy

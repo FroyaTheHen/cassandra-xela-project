@@ -9,15 +9,15 @@ commitlog_sync: batch
 partitioner: org.apache.cassandra.dht.Murmur3Partitioner
 endpoint_snitch: SimpleSnitch
 rpc_address: 0.0.0.0
-listen_address: 172.18.0.3
+listen_address: 172.19.0.2
 rpc_keepalive: true
 start_native_transport: true
 native_transport_port: 9042
-broadcast_rpc_address: 172.18.0.3
-broadcast_address: 172.18.0.3
+broadcast_rpc_address: 172.19.0.2
+broadcast_address: 172.19.0.2
 seed_provider:
     - class_name: org.apache.cassandra.locator.SimpleSeedProvider
       parameters:
           # seeds is actually a comma-delimited list of addresses.
           # Ex: "<ip1>,<ip2>,<ip3>"
-          - seeds: "172.18.0.3"
+          - seeds: "172.19.0.2"

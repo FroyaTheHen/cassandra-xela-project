@@ -76,7 +76,7 @@ DATABASES = {
         'ENGINE': 'django_cassandra_engine',
         'NAME': 'xela_cluster',
         'TEST_NAME': 'xela_namespace',
-        'HOST': '172.18.0.3,',
+        'HOST': '172.19.0.2,',
         'OPTIONS': {
             'connection': {
                 'auth_provider': PlainTextAuthProvider(username="cassandra", password="cassandra"),
