@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  cassandra:
+    network_mode: quetzaltenango_default
+    image: cassandra:latest
+    container_name: xela-container
+    ports:
+      - "9042:9042"
+    volumes:
+      - ./cassandra/cassandra.yaml:/etc/cassandra/cassandra.yaml
+  backend:
+    network_mode: quetzaltenango_default
+    build:
+      context: .
+      dockerfile: ./app/Dockerfile
+    container_name: chichi-container
+    command: sh -c "python3 app/manage.py sync_cassandra && python3 app/manage.py runserver 0.0.0.0:8000"
+    restart: always
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+
+#    depends_on:
+#      - cassandra:
+#          condition: service_healthy
